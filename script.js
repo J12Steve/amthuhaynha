@@ -84,10 +84,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+  });
 
+document.addEventListener("keydown", function(e) {
+    if (e.key === "F12" || (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "C" || e.key === "J")) || (e.ctrlKey && e.key === "U")) {
+      e.preventDefault();
+    }
+  });
     // Gọi API lần đầu
     fetchMatches();
 
     // Làm mới dữ liệu mỗi 30 giây
     setInterval(fetchMatches, 30000);
 });
+
+   
+
