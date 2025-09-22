@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công Thức Gỏi Cuốn Tôm Thịt - Ẩm Thực Vui</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Ẩm Thực Vui</div>
+            <button class="hamburger" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Trang Chủ</a></li>
+                <li class="dropdown">
+                    <a href="#">Công Thức</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pho-bo.html">Món Việt</a></li>
+                        <li><a href="sushi.html">Món Á</a></li>
+                        <li><a href="pizza.html">Món Âu</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Mẹo Nấu Ăn</a></li>
+                <li><a href="contact.html">Liên Hệ</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" data-tooltip="Giao diện tối">🌙</button>
+        </nav>
+    </header>
+    <main>
+        <section class="recipe-hero">
+            <h1>Công Thức Gỏi Cuốn Tôm Thịt</h1>
+            <p>Gỏi cuốn tươi mát với tôm, thịt, rau sống, và nước chấm đậu phộng béo ngậy.</p>
+            <img src="../img/goi-cuon.jpg" alt="Gỏi Cuốn" class="recipe-image">
+        </section>
+        <section class="recipe-content">
+            <div class="recipe-details">
+                <h2>Nguyên Liệu</h2>
+                <ul class="ingredient-list">
+                    <li>200g tôm sú (luộc, bóc vỏ)</li>
+                    <li>200g thịt heo (thăn hoặc ba chỉ, luộc)</li>
+                    <li>10 lá bánh tráng (loại cuốn gỏi)</li>
+                    <li>100g bún tươi</li>
+                    <li>Rau sống: xà lách, húng quế, rau mùi, giá đỗ</li>
+                    <li>1 củ cà rốt (thái sợi)</li>
+                    <li>50g đậu phộng rang, giã nhỏ</li>
+                    <li>2 muỗng canh tương hột</li>
+                    <li>1 muỗng canh nước mắm</li>
+                    <li>1 muỗng canh đường</li>
+                    <li>Tỏi, ớt, chanh để nêm</li>
+                </ul>
+                <h2>Cách Làm</h2>
+                <ol class="step-list">
+                    <li>Luộc tôm và thịt heo, để nguội, thái thịt thành lát mỏng, tôm chẻ đôi.</li>
+                    <li>Ngâm bánh tráng trong nước ấm 5-10 giây cho mềm.</li>
+                    <li>Xếp rau sống, bún, cà rốt, tôm, thịt lên bánh tráng, cuốn chặt thành cuộn.</li>
+                    <li>Pha nước chấm: đun nóng tương hột với 2 muỗng canh nước, thêm nước mắm, đường, tỏi, ớt.</li>
+                    <li>Rắc đậu phộng rang lên nước chấm, thêm chanh cho vừa vị.</li>
+                    <li>Dọn gỏi cuốn với nước chấm và thưởng thức.</li>
+                </ol>
+                <h2>Mẹo Nấu Ngon</h2>
+                <ul class="tips-list">
+                    <li>Cuốn chặt nhưng không quá căng để bánh tráng không rách.</li>
+                    <li>Chọn tôm tươi để gỏi cuốn ngọt hơn.</li>
+                    <li>Pha nước chấm hơi sệt để bám tốt khi chấm.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Ẩm Thực Vui. Tất cả quyền được bảo lưu.</p>
+    </footer>
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        function updateTooltip() {
+            toggleButton.setAttribute('data-tooltip', document.body.classList.contains('dark-mode') ? 'Giao diện sáng' : 'Giao diện tối');
+        }
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            toggleButton.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            updateTooltip();
+        });
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            document.body.classList.toggle('dark-mode', e.matches);
+            toggleButton.textContent = e.matches ? '☀️' : '🌙';
+            updateTooltip();
+        });
+
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark-mode');
+            toggleButton.textContent = '☀️';
+            updateTooltip();
+        } else {
+            updateTooltip();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công Thức Bánh Xèo Giòn Rụm - Ẩm Thực Vui</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Ẩm Thực Vui</div>
+            <button class="hamburger" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Trang Chủ</a></li>
+                <li class="dropdown">
+                    <a href="#">Công Thức</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/html/pho-bo.html">Món Việt</a></li>
+                        <li><a href="/html/sushi.html">Món Á</a></li>
+                        <li><a href="pizza.html">Món Âu</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Mẹo Nấu Ăn</a></li>
+                <li><a href="contact.html">Liên Hệ</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" data-tooltip="Giao diện tối">🌙</button>
+        </nav>
+    </header>
+    <main>
+        <section class="recipe-hero">
+            <h1>Công Thức Bánh Xèo Giòn Rụm</h1>
+            <p>Bánh xèo miền Nam với vỏ bánh giòn, nhân tôm, thịt và giá đỗ, chấm nước mắm chua ngọt.</p>
+            <img src="../img/banh-xeo.jpg" alt="Bánh Xèo" class="recipe-image">
+        </section>
+        <section class="recipe-content">
+            <div class="recipe-details">
+                <h2>Nguyên Liệu</h2>
+                <ul class="ingredient-list">
+                    <li>200g bột gạo</li>
+                    <li>50g bột nghệ</li>
+                    <li>300ml nước cốt dừa</li>
+                    <li>200ml nước</li>
+                    <li>200g tôm sú (bóc vỏ)</li>
+                    <li>200g thịt heo (ba chỉ, thái mỏng)</li>
+                    <li>200g giá đỗ</li>
+                    <li>1 củ hành tây (thái mỏng)</li>
+                    <li>2 muỗng canh nước mắm</li>
+                    <li>1 muỗng canh đường</li>
+                    <li>Rau sống: xà lách, húng quế, rau mùi</li>
+                    <li>Tỏi, ớt, chanh để nêm</li>
+                </ul>
+                <h2>Cách Làm</h2>
+                <ol class="step-list">
+                    <li>Hòa bột gạo, bột nghệ, nước cốt dừa, nước, và một chút muối thành hỗn hợp lỏng, để nghỉ 30 phút.</li>
+                    <li>Phi thơm hành tây, xào tôm và thịt heo với chút muối, tiêu.</li>
+                    <li>Đun nóng chảo, thêm dầu, đổ một lớp bột mỏng, xoay chảo để bột dàn đều.</li>
+                    <li>Thêm tôm, thịt, giá đỗ lên một nửa bánh, đậy nắp 2-3 phút cho bánh giòn.</li>
+                    <li>Gấp đôi bánh, chiên thêm 1 phút, lấy ra để ráo dầu.</li>
+                    <li>Pha nước mắm: 2 muỗng canh nước mắm, 1 muỗng canh đường, 3 muỗng canh nước, tỏi, ớt, chanh.</li>
+                    <li>Dọn bánh xèo với rau sống và nước mắm.</li>
+                </ol>
+                <h2>Mẹo Nấu Ngon</h2>
+                <ul class="tips-list">
+                    <li>Đun chảo thật nóng trước khi đổ bột để bánh giòn.</li>
+                    <li>Thêm chút bia vào bột bánh để tăng độ xốp.</li>
+                    <li>Chọn giá đỗ tươi để nhân bánh ngọt hơn.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Ẩm Thực Vui. Tất cả quyền được bảo lưu.</p>
+    </footer>
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        function updateTooltip() {
+            toggleButton.setAttribute('data-tooltip', document.body.classList.contains('dark-mode') ? 'Giao diện sáng' : 'Giao diện tối');
+        }
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            toggleButton.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            updateTooltip();
+        });
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            document.body.classList.toggle('dark-mode', e.matches);
+            toggleButton.textContent = e.matches ? '☀️' : '🌙';
+            updateTooltip();
+        });
+
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark-mode');
+            toggleButton.textContent = '☀️';
+            updateTooltip();
+        } else {
+            updateTooltip();
+        }
+    </script>
+</body>
+</html>

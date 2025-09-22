@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công Thức Beef Wellington - Ẩm Thực Vui</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Ẩm Thực Vui</div>
+            <button class="hamburger" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Trang Chủ</a></li>
+                <li class="dropdown">
+                    <a href="#">Công Thức</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pho-bo.html">Món Việt</a></li>
+                        <li><a href="sushi.html">Món Á</a></li>
+                        <li><a href="pizza.html">Món Âu</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Mẹo Nấu Ăn</a></li>
+                <li><a href="contact.html">Liên Hệ</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" data-tooltip="Giao diện tối">🌙</button>
+        </nav>
+    </header>
+    <main>
+        <section class="recipe-hero">
+            <h1>Công Thức Beef Wellington</h1>
+            <p>Thịt bò bọc bánh puff, nấm và pate, nướng vàng thơm, sang trọng.</p>
+            <img src="../img/beef-wellington.jpg" alt="Beef Wellington" class="recipe-image">
+        </section>
+        <section class="recipe-content">
+            <div class="recipe-details">
+                <h2>Nguyên Liệu</h2>
+                <ul class="ingredient-list">
+                    <li>500g thăn bò (beef tenderloin)</li>
+                    <li>200g nấm (cremini hoặc nấm mỡ, băm nhuyễn)</li>
+                    <li>100g pate gan (hoặc gan ngỗng)</li>
+                    <li>1 tấm bánh puff (puff pastry)</li>
+                    <li>2 muỗng canh mù tạt Dijon</li>
+                    <li>1 quả trứng (đánh tan để quét bánh)</li>
+                    <li>2 muỗng canh dầu ô liu</li>
+                    <li>1 tép tỏi (băm nhuyễn)</li>
+                    <li>1 nhánh thyme tươi</li>
+                    <li>Muối, tiêu</li>
+                </ul>
+                <h2>Cách Làm</h2>
+                <ol class="step-list">
+                    <li>Ướp thăn bò với muối, tiêu, áp chảo nhanh với dầu ô liu, để nguội.</li>
+                    <li>Xào nấm với tỏi, thyme, muối, tiêu đến khi khô, để nguội.</li>
+                    <li>Phết mù tạt lên thăn bò, bọc kín với pate và hỗn hợp nấm.</li>
+                    <li>Đặt thịt vào giữa tấm bánh puff, gấp kín, quét trứng lên bề mặt.</li>
+                    <li>Nướng ở 200°C trong 25-30 phút đến khi bánh vàng giòn.</li>
+                    <li>Nghỉ 5 phút, cắt lát và dọn nóng.</li>
+                </ol>
+                <h2>Mẹo Nấu Ngon</h2>
+                <ul class="tips-list">
+                    <li>Làm lạnh thịt trước khi bọc bánh để dễ thao tác.</li>
+                    <li>Xào nấm thật khô để tránh làm ướt bánh puff.</li>
+                    <li>Cắt bánh bằng dao sắc để giữ lớp bánh đẹp.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Ẩm Thực Vui. Tất cả quyền được bảo lưu.</p>
+    </footer>
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        function updateTooltip() {
+            toggleButton.setAttribute('data-tooltip', document.body.classList.contains('dark-mode') ? 'Giao diện sáng' : 'Giao diện tối');
+        }
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            toggleButton.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            updateTooltip();
+        });
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            document.body.classList.toggle('dark-mode', e.matches);
+            toggleButton.textContent = e.matches ? '☀️' : '🌙';
+            updateTooltip();
+        });
+
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark-mode');
+            toggleButton.textContent = '☀️';
+            updateTooltip();
+        } else {
+            updateTooltip();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ - Ẩm Thực Vui</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Ẩm Thực Vui</div>
+            <button class="hamburger" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Trang Chủ</a></li>
+                <li class="dropdown">
+                    <a href="#">Công Thức</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pho-bo.html">Món Việt</a></li>
+                        <li><a href="sushi.html">Món Á</a></li>
+                        <li><a href="pizza.html">Món Âu</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Mẹo Nấu Ăn</a></li>
+                <li><a href="contact.html">Liên Hệ</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" data-tooltip="Giao diện tối">🌙</button>
+        </nav>
+    </header>
+    <main>
+        <section class="contact-hero">
+            <h1>Liên Hệ Với Ẩm Thực Vui</h1>
+            <p>Chia sẻ ý kiến, thắc mắc hoặc công thức yêu thích của bạn với chúng tôi!</p>
+        </section>
+        <section class="contact-content">
+            <div class="contact-form-container">
+                <h2>Gửi Tin Nhắn</h2>
+                <div class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Họ và Tên</label>
+                        <input type="text" id="name" name="name" placeholder="Nhập tên của bạn" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Tin Nhắn</label>
+                        <textarea id="message" name="message" placeholder="Viết tin nhắn của bạn..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button" onclick="sendEmail()">Gửi</button>
+                    <p id="form-message" class="form-message"></p>
+                </div>
+            </div>
+            <div class="contact-info">
+                <h2>Thông Tin Liên Hệ</h2>
+                <p><strong>Email:</strong> contact@amthucvui.vn</p>
+                <p><strong>Điện thoại:</strong> (+84) 123 456 789</p>
+                <p><strong>Địa chỉ:</strong> 123 Đường Ẩm Thực, TP. Hồ Chí Minh, Việt Nam</p>
+                <div class="social-links">
+                    <h3>Theo Dõi Chúng Tôi</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Ẩm Thực Vui. Tất cả quyền được bảo lưu.</p>
+    </footer>
+    <script>
+        (function(){
+            emailjs.init("60SN50tMWfrOMpFe0");
+        })();
+
+        function sendEmail() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const formMessage = document.getElementById('form-message');
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                formMessage.textContent = 'Vui lòng nhập email hợp lệ!';
+                formMessage.classList.add('error');
+                formMessage.classList.remove('success');
+                return;
+            }
+
+            const emailParams = {
+                from_name: name,
+                from_email: email,
+                message: message,
+                subject: 'New Contact Form Submission from Ẩm Thực Vui',
+                to_email: 'plament294@gmail.com'
+            };
+
+            emailjs.send('service_es8fzgq', 'template_XXXXXX', emailParams)
+                .then(function(response) {
+                    formMessage.textContent = 'Tin nhắn đã được gửi thành công!';
+                    formMessage.classList.remove('error');
+                    formMessage.classList.add('success');
+                    document.getElementById('contact-form').reset();
+                }, function(error) {
+                    formMessage.textContent = 'Có lỗi xảy ra, vui lòng thử lại!';
+                    formMessage.classList.add('error');
+                    formMessage.classList.remove('success');
+                });
+        }
+
+        const toggleButton = document.getElementById('theme-toggle');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        function updateTooltip() {
+            toggleButton.setAttribute('data-tooltip', document.body.classList.contains('dark-mode') ? 'Giao diện sáng' : 'Giao diện tối');
+        }
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            toggleButton.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            updateTooltip();
+        });
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            document.body.classList.toggle('dark-mode', e.matches);
+            toggleButton.textContent = e.matches ? '☀️' : '🌙';
+            updateTooltip();
+        });
+
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark-mode');
+            toggleButton.textContent = '☀️';
+            updateTooltip();
+        } else {
+            updateTooltip();
+        }
+    </script>
+</body>
+</html>

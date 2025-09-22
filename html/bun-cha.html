@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công Thức Bún Chả Hà Nội - Ẩm Thực Vui</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Ẩm Thực Vui</div>
+            <button class="hamburger" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Trang Chủ</a></li>
+                <li class="dropdown">
+                    <a href="#">Công Thức</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="0">Món Việt</a></li>
+                        <li><a href="0">Món Á</a></li>
+                        <li><a href="0">Món Âu</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Mẹo Nấu Ăn</a></li>
+                <li><a href="contact.html">Liên Hệ</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" data-tooltip="Giao diện tối">🌙</button>
+        </nav>
+    </header>
+    <main>
+        <section class="recipe-hero">
+            <h1>Công Thức Bún Chả Hà Nội</h1>
+            <p>Món bún chả truyền thống với chả nướng thơm lừng, nước mắm chua ngọt, và bún tươi.</p>
+            <img src="../img/bun-cha.jpg" alt="Bún Chả" class="recipe-image">
+        </section>
+        <section class="recipe-content">
+            <div class="recipe-details">
+                <h2>Nguyên Liệu</h2>
+                <ul class="ingredient-list">
+                    <li>500g thịt heo (ba chỉ hoặc nạc vai)</li>
+                    <li>200g thịt heo băm</li>
+                    <li>500g bún tươi</li>
+                    <li>1 củ hành tím, băm nhuyễn</li>
+                    <li>2 muỗng canh nước mắm</li>
+                    <li>1 muỗng canh mật ong</li>
+                    <li>1 muỗng cà phê tiêu</li>
+                    <li>100ml giấm gạo</li>
+                    <li>50g đường</li>
+                    <li>Rau sống: xà lách, húng quế, rau mùi</li>
+                    <li>1 củ cà rốt, 1/4 quả đu đủ xanh (để ngâm chua)</li>
+                    <li>Tỏi, ớt, chanh để nêm</li>
+                </ul>
+                <h2>Cách Làm</h2>
+                <ol class="step-list">
+                    <li>Thái thịt heo thành miếng mỏng, ướp với hành tím, 1 muỗng canh nước mắm, mật ong, tiêu trong 1 giờ.</li>
+                    <li>Trộn thịt băm với 1 muỗng canh nước mắm, hành tím, tiêu, vo thành viên nhỏ.</li>
+                    <li>Nướng chả (thịt thái và thịt viên) trên than hoa hoặc lò nướng ở 200°C đến khi vàng thơm.</li>
+                    <li>Pha nước mắm: hòa 50ml nước mắm, 50g đường, 100ml giấm, 200ml nước, thêm tỏi, ớt băm.</li>
+                    <li>Ngâm cà rốt và đu đủ xanh với giấm, đường trong 30 phút để làm dưa chua.</li>
+                    <li>Xếp bún, rau sống, chả nướng, dưa chua vào tô, chan nước mắm và thưởng thức.</li>
+                </ol>
+                <h2>Mẹo Nấu Ngon</h2>
+                <ul class="tips-list">
+                    <li>Nướng chả trên than hoa để có hương vị khói đặc trưng.</li>
+                    <li>Pha nước mắm hơi ấm để dễ hòa tan đường.</li>
+                    <li>Chọn rau sống tươi để tăng độ giòn và thơm.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Ẩm Thực Vui. Tất cả quyền được bảo lưu.</p>
+    </footer>
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        function updateTooltip() {
+            toggleButton.setAttribute('data-tooltip', document.body.classList.contains('dark-mode') ? 'Giao diện sáng' : 'Giao diện tối');
+        }
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            toggleButton.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            updateTooltip();
+        });
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            document.body.classList.toggle('dark-mode', e.matches);
+            toggleButton.textContent = e.matches ? '☀️' : '🌙';
+            updateTooltip();
+        });
+
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark-mode');
+            toggleButton.textContent = '☀️';
+            updateTooltip();
+        } else {
+            updateTooltip();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công Thức Pizza Tự Làm - Ẩm Thực Vui</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Ẩm Thực Vui</div>
+            <button class="hamburger" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Trang Chủ</a></li>
+                <li class="dropdown">
+                    <a href="#">Công Thức</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pho-bo.html">Món Việt</a></li>
+                        <li><a href="sushi.html">Món Á</a></li>
+                        <li><a href="pizza.html">Món Âu</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Mẹo Nấu Ăn</a></li>
+                <li><a href="contact.html">Liên Hệ</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" data-tooltip="Giao diện tối">🌙</button>
+        </nav>
+    </header>
+    <main>
+        <section class="recipe-hero">
+            <h1>Công Thức Pizza Tự Làm</h1>
+            <p>Tự làm pizza tại nhà với đế bánh giòn, topping phong phú, và hương vị đậm đà!</p>
+            <img src="../img/pizzatu.jpg" alt="Pizza" class="recipe-image">
+        </section>
+        <section class="recipe-content">
+            <div class="recipe-details">
+                <h2>Nguyên Liệu</h2>
+                <ul class="ingredient-list">
+                    <li>300g bột mì đa dụng</li>
+                    <li>1 muỗng cà phê men nở khô</li>
+                    <li>1 muỗng cà phê đường</li>
+                    <li>1/2 muỗng cà phê muối</li>
+                    <li>200ml nước ấm</li>
+                    <li>2 muỗng canh dầu ô liu</li>
+                    <li>150g sốt cà chua</li>
+                    <li>200g phô mai mozzarella</li>
+                    <li>Topping tùy chọn: xúc xích, nấm, ớt chuông, lá húng quế</li>
+                    <li>Gia vị: oregano, tiêu</li>
+                </ul>
+                <h2>Cách Làm</h2>
+                <ol class="step-list">
+                    <li>Hòa men nở và đường vào nước ấm, để nghỉ 5-10 phút đến khi sủi bọt.</li>
+                    <li>Trộn bột mì, muối, dầu ô liu, và hỗn hợp men, nhào đến khi bột mịn (khoảng 10 phút).</li>
+                    <li>Đậy bột, ủ ở nơi ấm 1-2 giờ cho đến khi bột nở gấp đôi.</li>
+                    <li>Chia bột thành 2 phần, cán mỏng thành đế pizza, đặt lên khay nướng.</li>
+                    <li>Phết sốt cà chua lên đế, rắc phô mai, thêm topping và gia vị.</li>
+                    <li>Nướng ở 220°C trong 12-15 phút đến khi phô mai tan chảy và đế vàng giòn.</li>
+                    <li>Cắt lát và thưởng thức nóng.</li>
+                </ol>
+                <h2>Mẹo Nấu Ngon</h2>
+                <ul class="tips-list">
+                    <li>Đừng thêm quá nhiều topping để đế pizza không bị ướt.</li>
+                    <li>Pré-heat lò nướng kỹ để đế pizza giòn hơn.</li>
+                    <li>Thêm lá húng quế tươi sau khi nướng để giữ hương vị.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Ẩm Thực Vui. Tất cả quyền được bảo lưu.</p>
+    </footer>
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        function updateTooltip() {
+            toggleButton.setAttribute('data-tooltip', document.body.classList.contains('dark-mode') ? 'Giao diện sáng' : 'Giao diện tối');
+        }
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            toggleButton.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            updateTooltip();
+        });
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            document.body.classList.toggle('dark-mode', e.matches);
+            toggleButton.textContent = e.matches ? '☀️' : '🌙';
+            updateTooltip();
+        });
+
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark-mode');
+            toggleButton.textContent = '☀️';
+            updateTooltip();
+        } else {
+            updateTooltip();
+        }
+    </script>
+</body>
+</html>

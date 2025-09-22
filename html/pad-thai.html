@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công Thức Pad Thai Tôm - Ẩm Thực Vui</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Ẩm Thực Vui</div>
+            <button class="hamburger" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Trang Chủ</a></li>
+                <li class="dropdown">
+                    <a href="#">Công Thức</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pho-bo.html">Món Việt</a></li>
+                        <li><a href="sushi.html">Món Á</a></li>
+                        <li><a href="pizza.html">Món Âu</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Mẹo Nấu Ăn</a></li>
+                <li><a href="contact.html">Liên Hệ</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" data-tooltip="Giao diện tối">🌙</button>
+        </nav>
+    </header>
+    <main>
+        <section class="recipe-hero">
+            <h1>Công Thức Pad Thai Tôm</h1>
+            <p>Món mì xào Thái Lan với tôm, đậu phộng, và vị chua ngọt đặc trưng.</p>
+            <img src="../img/pad-thai.jpg" alt="Pad Thai" class="recipe-image">
+        </section>
+        <section class="recipe-content">
+            <div class="recipe-details">
+                <h2>Nguyên Liệu</h2>
+                <ul class="ingredient-list">
+                    <li>200g mì gạo (phở khô)</li>
+                    <li>200g tôm sú (bóc vỏ)</li>
+                    <li>2 quả trứng gà</li>
+                    <li>50g đậu phộng rang, giã nhỏ</li>
+                    <li>100g giá đỗ</li>
+                    <li>2 muỗng canh nước mắm</li>
+                    <li>2 muỗng canh nước me</li>
+                    <li>1 muỗng canh đường nâu</li>
+                    <li>1 muỗng canh tương ớt</li>
+                    <li>2 nhánh hành lá, thái nhỏ</li>
+                    <li>Tỏi, ớt khô, chanh để nêm</li>
+                    <li>Dầu ăn</li>
+                </ul>
+                <h2>Cách Làm</h2>
+                <ol class="step-list">
+                    <li>Ngâm mì gạo trong nước ấm 20 phút, để ráo.</li>
+                    <img class="congthuc" src="../img/ngam mi.jpg" alt="">
+                    <li>Pha sốt: trộn nước mắm, nước me, đường nâu, tương ớt.</li>
+                    <img class="congthuc" src="../img/sotpadthai.jpg" alt="">
+                    <li>Phi thơm tỏi và ớt khô, xào tôm đến khi chín, dạt ra một bên chảo.</li>
+                    <img class="congthuc" src="../img/phitoiot.jpg" alt="">
+                    <li>Đánh trứng vào chảo, khuấy đều, thêm mì gạo và sốt, xào nhanh tay.</li>
+                    <li>Thêm giá đỗ, hành lá, đậu phộng, trộn đều 1 phút.</li>
+                    <li>Dọn pad thai ra đĩa, rắc thêm đậu phộng, chanh, và ớt tùy thích.</li>
+                </ol>
+                <h2>Mẹo Nấu Ngon</h2>
+                <ul class="tips-list">
+                    <li>Xào mì ở lửa lớn để giữ độ dai và không dính chảo.</li>
+                    <li>Điều chỉnh nước me để cân bằng vị chua ngọt.</li>
+                    <li>Thêm ớt khô để tăng hương vị cay thơm.</li>
+                    <img class="congthuc" src="../img/pad-thai.jpg" alt="">
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Ẩm Thực Vui. Tất cả quyền được bảo lưu.</p>
+    </footer>
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        function updateTooltip() {
+            toggleButton.setAttribute('data-tooltip', document.body.classList.contains('dark-mode') ? 'Giao diện sáng' : 'Giao diện tối');
+        }
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            toggleButton.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            updateTooltip();
+        });
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            document.body.classList.toggle('dark-mode', e.matches);
+            toggleButton.textContent = e.matches ? '☀️' : '🌙';
+            updateTooltip();
+        });
+
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark-mode');
+            toggleButton.textContent = '☀️';
+            updateTooltip();
+        } else {
+            updateTooltip();
+        }
+    </script>
+</body>
+</html>

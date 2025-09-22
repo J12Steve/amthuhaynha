@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công Thức Sushi Tươi Ngon - Ẩm Thực Vui</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Ẩm Thực Vui</div>
+            <button class="hamburger" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Trang Chủ</a></li>
+                <li class="dropdown">
+                    <a href="#">Công Thức</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pho-bo.html">Món Việt</a></li>
+                        <li><a href="sushi.html">Món Á</a></li>
+                        <li><a href="pizza.html">Món Âu</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Mẹo Nấu Ăn</a></li>
+                <li><a href="contact.html">Liên Hệ</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" data-tooltip="Giao diện tối">🌙</button>
+        </nav>
+    </header>
+    <main>
+        <section class="recipe-hero">
+            <h1>Công Thức Sushi Tươi Ngon</h1>
+            <p>Học cách làm sushi tại nhà với nguyên liệu tươi sống và kỹ thuật đơn giản!</p>
+            <img src="../img/Sushi-va-Sashimi.jpg" alt="Sushi" class="recipe-image">
+        </section>
+        <section class="recipe-content">
+            <div class="recipe-details">
+                <h2>Nguyên Liệu</h2>
+                <ul class="ingredient-list">
+                    <li>300g gạo sushi (gạo Nhật hạt ngắn)</li>
+                    <li>400ml nước</li>
+                    <li>50ml giấm gạo</li>
+                    <li>2 muỗng canh đường</li>
+                    <li>1 muỗng cà phê muối</li>
+                    <li>200g cá hồi tươi (cấp sushi)</li>
+                    <li>100g cá ngừ tươi (cấp sushi)</li>
+                    <li>1 quả bơ</li>
+                    <li>1 quả dưa leo</li>
+                    <li>10 lá rong biển (nori)</li>
+                    <li>Gừng ngâm, wasabi, nước tương để ăn kèm</li>
+                </ul>
+                <h2>Cách Làm</h2>
+                <ol class="step-list">
+                    <li>Rửa gạo sushi dưới vòi nước lạnh cho đến khi nước trong, ngâm gạo 30 phút.</li>
+                    <li>Nấu gạo với 400ml nước trong nồi cơm điện, để nguội sau khi nấu.</li>
+                    <li>Trộn giấm gạo, đường, muối, đun nhẹ cho tan, để nguội rồi trộn đều với gạo.</li>
+                    <li>Thái cá hồi, cá ngừ, bơ, dưa leo thành thanh dài mỏng.</li>
+                    <li>Đặt lá nori lên mành tre, trải một lớp gạo mỏng, thêm cá, bơ, dưa leo ở giữa.</li>
+                    <li>Cuốn chặt sushi bằng mành tre, cắt thành khoanh 2cm bằng dao sắc.</li>
+                    <li>Dọn sushi với gừng ngâm, wasabi, và nước tương.</li>
+                </ol>
+                <h2>Mẹo Nấu Ngon</h2>
+                <ul class="tips-list">
+                    <li>Chọn cá tươi cấp sushi từ nguồn đáng tin cậy để đảm bảo an toàn.</li>
+                    <li>Giữ dao ướt khi cắt sushi để có lát cắt mịn.</li>
+                    <li>Trải gạo mỏng và đều để sushi không bị quá dày.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Ẩm Thực Vui. Tất cả quyền được bảo lưu.</p>
+    </footer>
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        function updateTooltip() {
+            toggleButton.setAttribute('data-tooltip', document.body.classList.contains('dark-mode') ? 'Giao diện sáng' : 'Giao diện tối');
+        }
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            toggleButton.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            updateTooltip();
+        });
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            document.body.classList.toggle('dark-mode', e.matches);
+            toggleButton.textContent = e.matches ? '☀️' : '🌙';
+            updateTooltip();
+        });
+
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark-mode');
+            toggleButton.textContent = '☀️';
+            updateTooltip();
+        } else {
+            updateTooltip();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công Thức Crème Brûlée - Ẩm Thực Vui</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Ẩm Thực Vui</div>
+            <button class="hamburger" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Trang Chủ</a></li>
+                <li class="dropdown">
+                    <a href="#">Công Thức</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pho-bo.html">Món Việt</a></li>
+                        <li><a href="sushi.html">Món Á</a></li>
+                        <li><a href="pizza.html">Món Âu</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Mẹo Nấu Ăn</a></li>
+                <li><a href="contact.html">Liên Hệ</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" data-tooltip="Giao diện tối">🌙</button>
+        </nav>
+    </header>
+    <main>
+        <section class="recipe-hero">
+            <h1>Công Thức Crème Brûlée</h1>
+            <p>Tráng miệng Pháp với lớp kem mịn và vỏ caramel giòn tan.</p>
+            <img src="../img/Creme-Brule.jpg" alt="Crème Brûlée" class="recipe-image">
+        </section>
+        <section class="recipe-content">
+            <div class="recipe-details">
+                <h2>Nguyên Liệu</h2>
+                <ul class="ingredient-list">
+                    <li>500ml kem tươi (heavy cream)</li>
+                    <li>5 lòng đỏ trứng gà</li>
+                    <li>100g đường (chia đôi)</li>
+                    <li>1 muỗng cà phê tinh chất vani</li>
+                    <li>1/4 muỗng cà phê muối</li>
+                    <li>Nước nóng để nướng cách thủy</li>
+                </ul>
+                <h2>Cách Làm</h2>
+                <ol class="step-list">
+                    <li>Đun kem tươi với vani và muối ở lửa nhỏ, không để sôi, để nguội nhẹ.</li>
+                    <li>Đánh lòng đỏ trứng với 50g đường đến khi mịn và nhạt màu.</li>
+                    <li>Đổ từ từ kem ấm vào hỗn hợp trứng, khuấy đều, lọc qua rây.</li>
+                    <li>Chia hỗn hợp vào 4-6 ramekin, đặt vào khay nướng, đổ nước nóng vào khay.</li>
+                    <li>Nướng ở 150°C trong 30-35 phút đến khi kem hơi se mặt.</li>
+                    <li>Làm lạnh 4 giờ, rắc 50g đường lên mặt, dùng đèn khò tạo lớp caramel.</li>
+                    <li>Dọn ngay để thưởng thức lớp caramel giòn.</li>
+                </ol>
+                <h2>Mẹo Nấu Ngon</h2>
+                <ul class="tips-list">
+                    <li>Lọc hỗn hợp kem để loại bỏ bọt khí, tạo kem mịn.</li>
+                    <li>Khò caramel nhanh và đều để tránh cháy đường.</li>
+                    <li>Làm lạnh ramekin trước khi khò để giữ kem mát.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Ẩm Thực Vui. Tất cả quyền được bảo lưu.</p>
+    </footer>
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        function updateTooltip() {
+            toggleButton.setAttribute('data-tooltip', document.body.classList.contains('dark-mode') ? 'Giao diện sáng' : 'Giao diện tối');
+        }
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            toggleButton.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            updateTooltip();
+        });
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            document.body.classList.toggle('dark-mode', e.matches);
+            toggleButton.textContent = e.matches ? '☀️' : '🌙';
+            updateTooltip();
+        });
+
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark-mode');
+            toggleButton.textContent = '☀️';
+            updateTooltip();
+        } else {
+            updateTooltip();
+        }
+    </script>
+</body>
+</html>
